@@ -35,29 +35,30 @@ backdrop-filter:blur(20px);
 -webkit-backdrop-filter:blur(22px);
 padding:16px;
 background:rgba(255,255,255,.4);
-
-text-align:center;
 left:0;
 top:0;
 position:fixed;
 height:100px;
 width:100%;
+text-align:center;
 }
 
 .content {
+display:none;
 margin-top:132px;
 }
 
 .card {
+-webkit-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
+box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
+
 transition:0.4s all;
 font-size:2vw;
 font-family: "Josefin Sans", "Sans Serif";
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(22px);
 padding:32px;
-background:rgba(255,255,255,.4);
+background:white;
 border-radius:20px;
-box-sizing:border-radius;
 }
 </style>
 <script>
@@ -74,6 +75,8 @@ for (var i=0; i < data.strings.length; i++) {
     text:data.strings[i].text,
     class: "card",
     style: "margin-top: 8px"
+  }).click(function() {
+  alert("Yeet");
   });
 
 $(".content").append(newCard);
@@ -81,7 +84,9 @@ $(".content").append(newCard);
 
 });
 
-$("#toolbar").delay(500).slideDown(400);
+$(".content").fadeIn(800);
+
+$("#toolbar").slideDown(800);
 });
 
 function setContentMargin() {
