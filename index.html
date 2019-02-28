@@ -8,8 +8,10 @@ Skoleshit
 </title>
 </head>
 <body>
+<img src="https://source.unsplash.com/random"></img>
+
 <div id="toolbar">
-TITLE
+YEYEE TITLE DUD
 </div>
 
 <div class="content">
@@ -19,11 +21,15 @@ TITLE
 <style>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
-body {
-  background-blend-mode:overlay;
-    background-image:url("https://source.unsplash.com/random");
-    background-size:cover;
-    background-attachment:fixed;
+img {
+position:fixed;
+left:0;
+top:0;
+z-index:-99;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
 
 #toolbar {
@@ -65,29 +71,33 @@ border-radius:20px;
 var smallPadding = 8;
 var mediumPadding = 32;
 
+var messageCards = [];
+
 // On document ready
 $(function(){
 
  setContentMargin();
+ 
 $.getJSON("https://raw.githubusercontent.com/magswag/SkoleShit/master/data.json", function(data) {
 for (var i=0; i < data.strings.length; i++) {
   var newCard = $("<div/>", {
     text:data.strings[i].text,
     class: "card",
-    style: "margin-top: 8px"
-  }).click(function() {
-  alert("Yeet");
+    style: "margin-top: 8px; cursor:pointer;"
   });
-
 $(".content").append(newCard);
 }
+});
+ $('div').on('click', function() {
+    alert("Clicked.");
+  });
+  
+$(".content").delay(1000).fadeIn(800);
 
+$("#toolbar").delay(1000).slideDown(800);
 });
 
-$(".content").fadeIn(800);
 
-$("#toolbar").slideDown(800);
-});
 
 function setContentMargin() {
   $(".content").css("margin-top", $("#toolbar").height()+smallPadding+mediumPadding);
