@@ -2,6 +2,8 @@
 <html>
 
 <body>
+<div id="background"/>
+
 <div class="card">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut venenatis sapien, et aliquet nunc. Nullam quis augue ipsum. Sed sit amet hendrerit sapien. Sed vitae auctor sem. Sed sit amet blandit odio. Integer scelerisque dolor ut eros vestibulum scelerisque. Duis porta eleifend magna et volutpat. Donec luctus vitae ex id egestas. Integer aliquet enim mattis nibh mattis pulvinar. Mauris tempor tellus enim, ac condimentum ex cursus at. Praesent consequat bibendum enim, non tincidunt felis. Proin tempus tellus at eros mattis maximus. Ut lacinia non risus eu pretium. 
 </div>
@@ -51,16 +53,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut venenatis sap
 </body>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
-body {
 
-background:url("https://source.unsplash.com/random")no-repeat fixed 100%;
+#background {
+    background:url("https://source.unsplash.com/random");
+    background-size:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:-5;
 }
 .card {
 font-family: "Josefin Sans", "Sans Serif";
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
 padding:16px;
-background:rgba(255,255,255,.55);
+background:rgba(255,255,255,.5);
 border-radius:10px;
 }
 </style>
