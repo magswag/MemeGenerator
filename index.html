@@ -78,8 +78,10 @@ loadNewMemeFormat()
  function loadNewMemeFormat() {
 
         var $memeImage = $("#memeImg");
+        var $memeName = $("#memeName");
         $memeImage.slideUp(200);
         $memeImage.fadeOut(200);
+        $memeName.fadeOut(200);
    $.getJSON("https://api.imgflip.com/get_memes", function(data) {
      var randomMeme = data.data.memes[Math.floor(Math.random() * data.data.memes.length-1)];
      var img = $("<img />").attr('src', randomMeme.url)
@@ -91,6 +93,8 @@ loadNewMemeFormat()
                  img.remove();
                  $memeImage.slideDown();
                  $memeImage.fadeIn();
+                 $memeName.html(randomMeme.name);
+                 $memeName.fadeIn();
              }
          });
 
