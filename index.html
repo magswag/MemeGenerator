@@ -9,10 +9,12 @@ Skoleshit
 </head>
 
 <body>
-<div class="card" id="cardValuta" style="width:100%">
-<h1>Valuta-kalkulator</h1>
-Bruk denne til å konvertere fra en valuta til en annen.
-<button style="width:100%; margin-top:8px">KALKULER</button>
+<div class="card" id="cardMeme" style="width:100%">
+<h1>Meme-generator</h1>
+Lag en episk meme!
+<img src="https://screenshotlayer.com/images/assets/placeholder.png" id="memeImg"></img>
+<h1 id="memeName"></h1>
+<button onclick="loadNewMemeFormat()" style="width:100%; margin-top:8px">FINN NYTT FORMAT</button>
 </div>
 </body>
 
@@ -23,11 +25,19 @@ body {
 background:#eee;
 }
 
+#memeImg {
+  margin-top: 8px;
+  border-radius: 20px;
+  object-fit: cover;
+  width: inherit;
+  height: auto;
+}
+
 button {
 cursor:pointer;
 background:blue;
 border:0;
-padding:8px;
+padding:12px;
 border-radius:10px;
 box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
 color:white;
@@ -54,14 +64,23 @@ font-size:18px;
 font-family: "Josefin Sans", "Sans Serif";
 padding:16px;
 background:white;
-border-radius:10px;
+border-radius:20px;
 }
 </style>
 <script>
 
 // On document ready
 $(function(){
-$("#cardValuta").delay(250).slideDown(1000);
+$("#cardMeme").delay(250).slideDown(400);
  });
+
+ function loadNewMemeFormat() {
+   $.getJSON("https://api.imgflip.com/get_memes", function(data) {
+     var randomMeme = data.data.memes[Math.floor(Math.random() * data.data.memes.length-1)];
+
+     $("#memeName").html(randomMeme.name);
+     $("#memeImg").attr("src", randomMeme.url);
+   });
+ }
 </script>
 </html>
