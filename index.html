@@ -72,14 +72,27 @@ border-radius:20px;
 // On document ready
 $(function(){
 $("#cardMeme").delay(250).slideDown(400);
+loadNewMemeFormat();
  });
 
  function loadNewMemeFormat() {
-   $.getJSON("https://api.imgflip.com/get_memes", function(data) {
-     var randomMeme = data.data.memes[Math.floor(Math.random() * data.data.memes.length-1)];
 
-     $("#memeName").html(randomMeme.name);
-     $("#memeImg").attr("src", randomMeme.url);
+        var $memeImage = $("#memeImg");
+   $.getJSON("https://api.imgflip.com/get_memes", function(data) {
+    // $("#memeImg").slideUp(100);
+     var randomMeme = data.data.memes[Math.floor(Math.random() * data.data.memes.length-1)];
+$memeImage.attr("src", "https://screenshotlayer.com/images/assets/placeholder.png");
+     var img = $("<img />").attr('src', randomMeme.url)
+         .on('load', function() {
+             if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+                 alert('broken image!');
+             } else {
+                 $memeImage.attr("src", img.attr("src"));
+                 img.remove();
+             }
+         });
+
+
    });
  }
 </script>
