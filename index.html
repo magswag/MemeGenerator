@@ -7,104 +7,61 @@
 Skoleshit
 </title>
 </head>
+
 <body>
-<img src="https://source.unsplash.com/random"></img>
-
-<div id="toolbar">
-YEYEE TITLE DUD
-</div>
-
-<div class="content">
-
+<div class="card" id="cardValuta" style="width:100%">
+<h1>Valuta-kalkulator</h1>
+Bruk denne til å konvertere fra en valuta til en annen.
+<button style="width:100%; margin-top:8px">KALKULER</button>
 </div>
 </body>
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
-img {
-position:fixed;
-left:0;
-top:0;
-z-index:-99;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+body {
+background:#eee;
 }
 
-#toolbar {
-z-index:99;
-  display: none;
-font-size:36px;
+button {
+cursor:pointer;
+background:blue;
+border:0;
+padding:8px;
+border-radius:10px;
+box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
+color:white;
 font-family: "Josefin Sans", "Sans Serif";
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(22px);
-padding:16px;
-background:rgba(255,255,255,.4);
-left:0;
-top:0;
-position:fixed;
-height:auto;
-width:100%;
-text-align:center;
+font-weight:400;
+font-size:18px;
+transition:0.4s all;
+outline: none;
+}
+button:hover {
+background:lightBlue;
 }
 
-.content {
-display:none;
-margin-top:132px;
+h1 {
+font-size:24px;
+font-weight:600;
 }
 
 .card {
--webkit-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
--moz-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
+box-sizing:border-box;
 box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.5);
-
 transition:0.4s all;
-font-size:2vw;
+font-size:18px;
 font-family: "Josefin Sans", "Sans Serif";
-padding:32px;
+padding:16px;
 background:white;
-border-radius:20px;
+border-radius:10px;
 }
 </style>
 <script>
-var smallPadding = 8;
-var mediumPadding = 32;
-
-var messageCards = [];
 
 // On document ready
 $(function(){
 
- setContentMargin();
- 
-$.getJSON("https://raw.githubusercontent.com/magswag/SkoleShit/master/data.json", function(data) {
-for (var i=0; i < data.strings.length; i++) {
-  var newCard = $("<div/>", {
-    text:data.strings[i].text,
-    class: "card",
-    style: "margin-top: 8px; cursor:pointer;"
-  });
-$(".content").append(newCard);
-}
-});
- $('div').on('click', function() {
-    alert("Clicked.");
-  });
-  
-$(".content").delay(1000).fadeIn(800);
-
-$("#toolbar").delay(1000).slideDown(800);
-});
-
-
-
-function setContentMargin() {
-  $(".content").css("margin-top", $("#toolbar").height()+smallPadding+mediumPadding);
-}
-
-$(window).resize(function() {
- setContentMargin();
-}).resize();
+ });
 </script>
 </html>
