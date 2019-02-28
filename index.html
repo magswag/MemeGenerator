@@ -13,9 +13,7 @@ TITLE
 </div>
 
 <div class="content">
-<div class="card" id="test">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut venenatis sapien, et aliquet nunc. Nullam quis augue ipsum. Sed sit amet hendrerit sapien. Sed vitae auctor sem. Sed sit amet blandit odio. Integer scelerisque dolor ut eros vestibulum scelerisque. Duis porta eleifend magna et volutpat. Donec luctus vitae ex id egestas. Integer aliquet enim mattis nibh mattis pulvinar. Mauris tempor tellus enim, ac condimentum ex cursus at. Praesent consequat bibendum enim, non tincidunt felis. Proin tempus tellus at eros mattis maximus. Ut lacinia non risus eu pretium. 
-</div>
+
 </div>
 </body>
 <style>
@@ -63,7 +61,7 @@ box-sizing:border-radius;
 }
 </style>
 <script>
-var smallPadding = 16;
+var smallPadding = 8;
 var mediumPadding = 32;
 
 // On document ready
@@ -71,10 +69,19 @@ $(function(){
 
  setContentMargin();
 $.getJSON("https://raw.githubusercontent.com/magswag/SkoleShit/master/data.json", function(data) {
-$("#test").html(data.text);
-});
-$("#toolbar").delay(500).slideDown(400);
+for (var i=0; i < data.strings.length; i++) {
+  var newCard = $("<div/>", {
+    text:data.strings[i].text,
+    class: "card",
+    style: "margin-top: 8px"
+  });
 
+$(".content").append(newCard);
+}
+
+});
+
+$("#toolbar").delay(500).slideDown(400);
 });
 
 function setContentMargin() {
