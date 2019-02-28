@@ -12,7 +12,7 @@ Skoleshit
 <div class="card" id="cardMeme" style="width:100%">
 <h1>Meme-generator</h1>
 Lag en episk meme!
-<img src="https://screenshotlayer.com/images/assets/placeholder.png" id="memeImg"></img>
+<img src="http://www.dariusland.com/images/load.gif" id="memeImg"></img>
 <h1 id="memeName"></h1>
 <button onclick="loadNewMemeFormat()" style="width:100%; margin-top:8px">FINN NYTT FORMAT</button>
 </div>
@@ -72,16 +72,16 @@ border-radius:20px;
 // On document ready
 $(function(){
 $("#cardMeme").delay(250).slideDown(400);
-loadNewMemeFormat();
+loadNewMemeFormat()
  });
 
  function loadNewMemeFormat() {
 
         var $memeImage = $("#memeImg");
+        $memeImage.slideUp(200);
+        $memeImage.fadeOut(200);
    $.getJSON("https://api.imgflip.com/get_memes", function(data) {
-    // $("#memeImg").slideUp(100);
      var randomMeme = data.data.memes[Math.floor(Math.random() * data.data.memes.length-1)];
-$memeImage.attr("src", "https://screenshotlayer.com/images/assets/placeholder.png");
      var img = $("<img />").attr('src', randomMeme.url)
          .on('load', function() {
              if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
@@ -89,6 +89,8 @@ $memeImage.attr("src", "https://screenshotlayer.com/images/assets/placeholder.pn
              } else {
                  $memeImage.attr("src", img.attr("src"));
                  img.remove();
+                 $memeImage.slideDown();
+                 $memeImage.fadeIn();
              }
          });
 
